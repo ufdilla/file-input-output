@@ -2,9 +2,11 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class inputFile {
+public class inputFile 
+{
 
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
          // String to be scanned to find the pattern. 
         String line = "Abunadi, I. (2013). Influence of Culture on e-Government Acceptance in Saudi Arabia. arXiv preprint arXiv:1307.7141."; 
         String pattern = "(([A-Za-z]+),(( [A-Z].)+))"; 
