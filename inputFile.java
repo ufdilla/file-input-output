@@ -33,8 +33,8 @@ public class inputFile
                 dataString = matcher2.replaceAll(lastName + firstName + "; ");
 
                 System.out.println (dataString);
-                out.newLine();
-                out.close();
+                out.newLine();;
+                out.write (dataString);
             }  
             
             else  
@@ -44,5 +44,6 @@ public class inputFile
         }
 
         in.close();
+        out.close();
     }
 }
