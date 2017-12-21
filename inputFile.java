@@ -7,8 +7,8 @@ public class inputFile
     public static void main (String args[]) throws IOException
     {
         // String to be scanned to find the pattern. 
-        BufferedReader in = new BufferedReader ( new FileReader ("input.txt"));
-        FileOutputStream out = new FileOutputStream ("output.txt");
+        BufferedReader in = new BufferedReader (new FileReader ("input.txt"));
+        BufferedWriter out = new BufferedWriter (new FileWriter("output.txt"));
         String data;
 
         while ((data  = in.readLine ()) != null) 
@@ -27,13 +27,14 @@ public class inputFile
                 String fullName = matcher1.group (1);
                 String firstName = matcher1.group (2);
                 String lastName = matcher1.group (3);
-
+               
                 Pattern rowPattern2 = Pattern.compile(fullName);
                 Matcher matcher2 = rowPattern2.matcher(dataString);
                 dataString = matcher2.replaceAll(lastName + firstName + "; ");
 
                 System.out.println (dataString);
-                // out.write(dataString);
+                out.newLine();
+                out.close();
             }  
             
             else  
