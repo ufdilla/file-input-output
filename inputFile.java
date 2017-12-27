@@ -22,7 +22,7 @@ public class inputFile {
                 // List<String> list = new ArrayList<>();
 
                 for (int i = 0; i < 2; i++) {
-                    String kata = a[i].replaceAll("\\.", "");
+                    String kata = a[i].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                     String[] b = kata.split(" ");
                     System.out.print(b[1] + ". " + b[0] + " ");
 
@@ -33,7 +33,7 @@ public class inputFile {
                     System.out.println(".");
                 }
 
-                String kata2 = a[2].replaceAll("\\.", "");
+                String kata2 = a[2].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                 String[] c = kata2.split(" ");
                 for (int k = 0; k < 1; k++) {
                     System.out.print(
@@ -44,7 +44,7 @@ public class inputFile {
                     System.out.println(".");
                 }
 
-                String kata3 = a[3].replaceAll("\\.", "");
+                String kata3 = a[3].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                 String[] d = kata3.split(" ");
 
                 for (int m = 0; m < 1; m++) {
