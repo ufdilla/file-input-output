@@ -2,59 +2,61 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class inputFile 
-{
-    public static void main (String args[]) throws IOException
-    {
-        // String to be scanned to find the pattern. 
-        BufferedReader input1 = new BufferedReader (new FileReader ("input.txt"));
-        BufferedWriter output1 = new BufferedWriter (new FileWriter("output.txt"));
-        String data1;
-        
-        while ((data1  = input1.readLine ()) != null) 
-        {
-            
-            String[] data2 = data1.split("");
-            // Create a Pattern object 
-            String pattern1 = "(([A-Za-z]+),(( [A-Z].)+))"; 
-            Pattern rowPattern1 = Pattern.compile (pattern1); 
-            
-            //Create matcher object. 
-            Matcher matcher1 = rowPattern1.matcher (data1); 
-           
-            if (matcher1.find ())  
-            { 
-                String fullName = matcher1.group (1);
-                String firstName = matcher1.group (2);
-                String lastName = matcher1.group (3);
-                // String dataString = data1.replaceAll("[.,(,)]", "").replaceAll("[?]", "?.");
-                
-                // Pattern rowPattern2 = Pattern.compile(fullName);
-                
-                // swapping name
-                String tempName = firstName;
-                firstName = lastName + " ";
-                lastName = tempName;
-                fullName = firstName + lastName;
-                System.out.println("data : " + fullName + data1);
-                
-                // System.out.println("matcher : " + matcher2.lookingAt());
-                // System.out.println("data type : " + matcher1.getClass().getName());
+public class inputFile {
 
+    public static void main(String[] args) {
+        try {
+            File file = new File("input.txt");
+            StringBuffer stringBuffer;
 
-                output1.newLine();
-                output1.write (data1);
-            }  
-            
-            else  
-            { 
-                System.out.println ("NO MATCH"); 
-            } 
+            try (FileReader fileReader = new FileReader(file)) {
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                stringBuffer = new StringBuffer();
+                String name;
+                while ((name = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(name);
+                    stringBuffer.append("\n");
+                }
+                //                    System.out.println(stringBuffer.toString());
+                String[] a = stringBuffer.toString().split("\n");
+                List<String> list = new ArrayList<>();
 
-            // System.out.println(data1);
+                for (int i = 0; i < 2; i++) {
+                    String kata = a[i].replaceAll("\\.", "");
+                    String[] b = kata.split(" ");
+                    System.out.print(b[1] + ". " + b[0] + " ");
+
+                    for (int j = 2; j < b.length; j++) {
+                        System.out.print(b[j] + " ");
+                    }
+
+                    System.out.println("");
+                }
+
+                String kata2 = a[2].replaceAll("\\.", "");
+                String[] c = kata2.split(" ");
+                for (int k = 0; k < 1; k++) {
+                    System.out.print(
+                            c[1] + " " + c[0] + " " + c[3] + " " + c[2] + " " + c[4] + " " + c[6] + " " + c[5] + " ");
+                    for (int l = 6; l < c.length; l++) {
+                        System.out.print(c[l] + " ");
+                    }
+                    System.out.println("");
+                }
+
+                String kata3 = a[3].replaceAll("\\.", "");
+                String[] d = kata3.split(" ");
+
+                for (int m = 0; m < 1; m++) {
+                    System.out.print(d[1] + ". " + d[0] + " ");
+                    for (int n = 2; n < d.length; n++) {
+                        System.out.print(d[n] + " ");
+                    }
+                    System.out.println("");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        input1.close();
-        output1.close();
     }
 }
