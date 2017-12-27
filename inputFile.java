@@ -8,7 +8,7 @@ public class inputFile {
         try {
             File file = new File("input.txt");
             StringBuffer stringBuffer;
-
+ 
             try (FileReader fileReader = new FileReader(file)) {
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 stringBuffer = new StringBuffer();
@@ -20,19 +20,18 @@ public class inputFile {
                 
                 String[] a = stringBuffer.toString().split("\n");
                 // List<String> list = new ArrayList<>();
-
+ 
                 for (int i = 0; i < 2; i++) {
                     String kata = a[i].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                     String[] b = kata.split(" ");
                     System.out.print(b[1] + ". " + b[0] + " ");
-
+ 
                     for (int j = 2; j < b.length; j++) {
                         System.out.print(b[j] + " ");
                     }
-
-                    System.out.println(".");
+    System.out.println(".");
                 }
-
+ 
                 String kata2 = a[2].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                 String[] c = kata2.split(" ");
                 for (int k = 0; k < 1; k++) {
@@ -43,10 +42,10 @@ public class inputFile {
                     }
                     System.out.println(".");
                 }
-
+ 
                 String kata3 = a[3].replaceAll("\\.", "").replaceAll("\\?", "\\?.");
                 String[] d = kata3.split(" ");
-
+ 
                 for (int m = 0; m < 1; m++) {
                     System.out.print(d[1] + ". " + d[0] + " ");
                     for (int n = 2; n < d.length; n++) {
