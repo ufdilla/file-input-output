@@ -7,54 +7,54 @@ public class inputFile
     public static void main (String args[]) throws IOException
     {
         // String to be scanned to find the pattern. 
-        BufferedReader in = new BufferedReader (new FileReader ("input.txt"));
-        BufferedWriter out = new BufferedWriter (new FileWriter("output.txt"));
-        String data, data2;
-
-        while ((data  = in.readLine ()) != null) 
+        BufferedReader input1 = new BufferedReader (new FileReader ("input.txt"));
+        BufferedWriter output1 = new BufferedWriter (new FileWriter("output.txt"));
+        String data1;
+        
+        while ((data1  = input1.readLine ()) != null) 
         {
-            // String dataString = data.replaceAll ("[.]", "").replaceAll ("[?]","?.").replaceAll("[(]","").replaceAll("[)]", ".");
             
+            String[] data2 = data1.split("");
             // Create a Pattern object 
-            String pattern = "(([A-Za-z]+),(( [A-Z].)+))"; 
-            Pattern rowPattern = Pattern.compile (pattern); 
-
-            //Create matcher object. 
-            Matcher matcher1 = rowPattern.matcher (data); 
+            String pattern1 = "(([A-Za-z]+),(( [A-Z].)+))"; 
+            Pattern rowPattern1 = Pattern.compile (pattern1); 
             
+            //Create matcher object. 
+            Matcher matcher1 = rowPattern1.matcher (data1); 
+           
             if (matcher1.find ())  
             { 
                 String fullName = matcher1.group (1);
                 String firstName = matcher1.group (2);
                 String lastName = matcher1.group (3);
-
-                String patternString = ".*..*";
-                Pattern pattern3 = Pattern.compile(patternString);
-                Matcher matcher = pattern3.matcher(data);
-                boolean matches = matcher.matches();
-
-                // Pattern rowPattern2 = Pattern.compile(fullName);
-                // Matcher matcher2 = rowPattern2.matcher(data);
-                // data2 = matcher2.replaceAll(lastName + " " + firstName + "; ");
-                // // matches1 = Patter;
+                // String dataString = data1.replaceAll("[.,(,)]", "").replaceAll("[?]", "?.");
                 
-                // System.out.println ("full name : " + fullName);
-                System.out.println(matches);
-                // System.out.println("length of full name : " + fullName.length());
-                System.out.println("data : " + data);
-                // System.out.println("data2 : " + data2);
-                // System.out.println("data type : " + fullName.getClass().getName());
-                out.newLine();
-                out.write (data);
+                // Pattern rowPattern2 = Pattern.compile(fullName);
+                
+                // swapping name
+                String tempName = firstName;
+                firstName = lastName + " ";
+                lastName = tempName;
+                fullName = firstName + lastName;
+                System.out.println("data : " + fullName + data1);
+                
+                // System.out.println("matcher : " + matcher2.lookingAt());
+                // System.out.println("data type : " + matcher1.getClass().getName());
+
+
+                output1.newLine();
+                output1.write (data1);
             }  
             
             else  
             { 
                 System.out.println ("NO MATCH"); 
             } 
+
+            // System.out.println(data1);
         }
 
-        in.close();
-        out.close();
+        input1.close();
+        output1.close();
     }
 }
