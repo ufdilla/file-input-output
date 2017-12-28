@@ -14,7 +14,7 @@ public class inputFile {
             try (FileReader fileReader1 = new FileReader (file1 )) 
             {
                 BufferedReader bufferedReader = new BufferedReader (fileReader1);
-                BufferedWriter out = new BufferedWriter(new FileWriter("output.txt"));
+                BufferedWriter out = new BufferedWriter(new FileWriter("output.txt", true));
 
                 stringBuffer1 = new StringBuffer ();
                 String name;
@@ -25,8 +25,7 @@ public class inputFile {
                 }
                 
                 String[] a = stringBuffer1.toString ().split ("\n");
-                // List<String> list = new ArrayList<>();
- 
+
                 for (int i = 0; i < 2; i++) 
                 {
                     String kata = a[i].replaceAll ("\\.", "").replaceAll ("\\?", "\\?.");
@@ -36,7 +35,6 @@ public class inputFile {
                     for (int j = 2; j < b.length; j++) 
                     {
                         System.out.print (b[j] + " ");
-                        // System.out.println("b[j] : " + b[j]);
                     }
                     System.out.println(".");
                 }
@@ -63,11 +61,17 @@ public class inputFile {
                     for (int n = 2; n < d.length; n++) 
                     {
                         System.out.print (d[n] + " ");
+                        out.newLine();
+                        out.write(d[n]);
                     }
 
                     System.out.println (".");
                 }
+               
+                out.close();
             }
+
+        
         } 
         catch (IOException e) 
         {
