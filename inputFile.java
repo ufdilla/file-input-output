@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class inputFile {
-
-    public static void main(String[] args) 
+public class inputFile 
+{
+    public static void main (String[] args) 
     {
         try 
         {
@@ -14,10 +14,11 @@ public class inputFile {
             try (FileReader fileReader1 = new FileReader (file1 )) 
             {
                 BufferedReader bufferedReader = new BufferedReader (fileReader1);
-                BufferedWriter out = new BufferedWriter(new FileWriter("output.txt", true));
+                BufferedWriter out = new BufferedWriter(new FileWriter ("output.txt", true));
 
                 stringBuffer1 = new StringBuffer ();
                 String name;
+
                 while ((name = bufferedReader.readLine ()) != null) 
                 {
                     stringBuffer1.append (name);
@@ -25,7 +26,6 @@ public class inputFile {
                 }
                 
                 String[] a = stringBuffer1.toString ().split ("\n");
-
                 for (int i = 0; i < 2; i++) 
                 {
                     String kata = a[i].replaceAll ("\\.", "").replaceAll ("\\?", "\\?.");
@@ -35,7 +35,10 @@ public class inputFile {
                     for (int j = 2; j < b.length; j++) 
                     {
                         System.out.print (b[j] + " ");
+                        out.newLine();
+                        out.write(b[j]);
                     }
+
                     System.out.println(".");
                 }
  
@@ -47,6 +50,8 @@ public class inputFile {
                     for (int l = 6; l < c.length; l++) 
                     {
                         System.out.print (c[l] + " ");
+                        out.newLine();
+                        out.write(c[l]);
                     }
 
                     System.out.println (".");
@@ -54,25 +59,23 @@ public class inputFile {
  
                 String kata3 = a[3].replaceAll ("\\.", "").replaceAll ("\\?", "\\?.");
                 String[] d = kata3.split (" ");
- 
                 for (int m = 0; m < 1; m++) 
                 {
                     System.out.print (d[1] + ". " + d[0] + " ");
                     for (int n = 2; n < d.length; n++) 
                     {
                         System.out.print (d[n] + " ");
-                        out.newLine();
-                        out.write(d[n]);
-                    }
+                    out.newLine ();
+                    out.write (d[n]);
+                }
 
                     System.out.println (".");
                 }
                
-                out.close();
+                out.close ();
             }
-
-        
         } 
+
         catch (IOException e) 
         {
             e.printStackTrace ();
